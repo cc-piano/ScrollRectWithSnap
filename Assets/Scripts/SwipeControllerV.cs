@@ -32,9 +32,13 @@ public class SwipeControllerV : MonoBehaviour, IBeginDragHandler, IEndDragHandle
  
     void Start()
     {
+        Input.multiTouchEnabled = false;
+        Content.GetComponent<GridLayoutGroup>().cellSize = new Vector2(Screen.width, Screen.height);
+        FindObjectOfType<CanvasScaler>().referenceResolution = new Vector2(Screen.width, Screen.height);
         Content.offsetMin = Vector2.zero;
         Content.offsetMax = Vector2.zero;
-        _initialSizeOfImage = GetComponent<RectTransform>().rect.width;
+        //_initialSizeOfImage = GetComponent<RectTransform>().rect.width;
+        _initialSizeOfImage = Screen.width;
         _amountOfImages = Content.childCount - 1;
         ScrollRectRectTransform = ScrollRect.GetComponent<RectTransform>();
 
